@@ -27,7 +27,7 @@
  */
 
 
-import "./index.css";
+import "./style/index.scss";
 import "./index.jsx";
 
 
