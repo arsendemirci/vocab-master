@@ -1,8 +1,8 @@
 {
   "name": "web-ui-devkit",
-  "productName": "web-ui-devkit",
+  "productName": "vocab-master",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "electron nodeJs application for practice on vocabulary and typing",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -13,8 +13,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "Arsen Demirci 84318739",
-    "email": "arsen.demirci2@huawei.com"
+    "name": "Arsen Demirci",
+    "email": "demirci.arsen@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
@@ -36,6 +36,7 @@
     "node-polyfill-webpack-plugin": "^2.0.1",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1",
+    "react-router-dom": "^6.21.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3"

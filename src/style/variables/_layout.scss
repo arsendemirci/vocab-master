@@ -1,13 +1,11 @@
 //------ main layout ------
-$window-height:1024px;
-$window-width:1280px;
-$page-width :980px;
-$page-height:904px;
+$window-height: 960px;
+$window-width: 1180px;
+$top-bar-height: 120px;
+$menu-width: 280px;
 
-//------- menu ------
-$menu-width:300px;
-$menu-height:1024px;
-$menu-item-width:calc($menu-width - 60px);
-
-//------- top-bar -----
-$top-bar-height:120px;
+$page-width: calc($window-width - $menu-width);
+$page-height: calc($window-height - $top-bar-height);
+$top-bar-width: $window-width;
+$menu-height: calc($window-height - $top-bar-height);
+$menu-item-width: calc($menu-width - 30px);

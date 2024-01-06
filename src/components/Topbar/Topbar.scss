@@ -1,0 +1,21 @@
+@import "/src/style/variables/variables";
+
+.top-bar {
+  height: $top-bar-height;
+  width: $top-bar-width;
+
+  &-logo {
+    width: $menu-width;
+    padding: 10px 20px;
+  }
+
+  &-content {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: right;
+  }
+
+  display: flex;
+  color: $menu-item-color;
+  align-items: center;
+}
