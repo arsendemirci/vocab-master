@@ -7,4 +7,6 @@ Intention of the application is to provide a flexible environment for improving 
 ###
 The project is a desktop application developed using electron.js, node.js and react.js.
 ###
-<img src="https://github.com/arsendemirci/vocab-master/main/src/assets/images/logo/electron_logo.png?raw=true" alt="drawing" width="40"/> $~$<img src="https://raw.githubusercontent.com/arsendemirci/vocab-master/main/src/assets/images/logo/js_logo.png" alt="drawing" width="40"/>  $~$<img src="https://raw.githubusercontent.com/arsendemirci/vocab-master/main/src/assets/images/logo/node.js_logo.png" alt="drawing" width="40"/>  $~$<img src="https://raw.githubusercontent.com/arsendemirci/vocab-master/main/src/assets/images/logo/react_logo.png" alt="drawing" width="40"/>  $~$<img src="https://raw.githubusercontent.com/arsendemirci/vocab-master/main/src/assets/images/logo/sass_logo.png" alt="drawing" width="40"/>
+
+<img src="src/assets/images/logo/electron_logo.png?raw=true" alt="drawing" width="40" height="40" /> &nbsp;&nbsp;<img src="src/assets/images/logo/js_logo.png" alt="drawing" width="40"  height="40" /> &nbsp;&nbsp;<img src="src/assets/images/logo/node.js_logo.png" alt="drawing" width="40"  height="40" /> &nbsp;&nbsp;<img src="src/assets/images/logo/react_logo.png" alt="drawing" width="40"  height="40" /> &nbsp;&nbsp;<img src="src/assets/images/logo/sass_logo.png" alt="drawing" width="40"  height="40" /> 
+
