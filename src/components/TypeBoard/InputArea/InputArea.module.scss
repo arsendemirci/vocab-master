@@ -3,11 +3,13 @@ $wrapper-padding-y: 16px;
 .input-area {
   border: 1px solid rgba(128, 128, 128, 0.524);
   padding: $wrapper-padding-y 24px;
+  padding-right: 60px;
   border-radius: 8px;
   height: calc($input-height + (2 * $wrapper-padding-y));
   overflow: hidden;
   background: white;
   box-shadow: 0 0 20px 6px #68686826;
+  position: relative;
   .input {
     display: inline-block;
     height: $input-height;
@@ -26,13 +28,20 @@ $wrapper-padding-y: 16px;
       opacity: 0;
       transform: scale(1, 1);
       padding-bottom: 2px;
-      text-shadow: 0 0 12px #11628640;
-      color: #116286;
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.321);
+      color: black;
       &:last-child {
         border-right: 8px solid rgb(95, 95, 95);
         animation: appear 0.3s forwards, blink 0.8s infinite;
       }
     }
+  }
+  .icon {
+    position: absolute;
+    right: 8px;
+    background-color: transparent;
+    transform: translate(0, -47%);
+    top: 50%;
   }
 }
 

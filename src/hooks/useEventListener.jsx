@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 // Hook
 function useEventListener(eventName, handler, element = window) {
   // Create a ref that stores handler
-  //const savedHandler = useRef();
+  const savedHandler = useRef();
 
   // Update ref.current value if handler changes.
   // This allows our effect below to always get latest handler ...
   // ... without us needing to pass it in effect deps array ...
   // ... and potentially cause effect to re-run every render.
-  // useEffect(() => {
-  //   savedHandler.current = handler;
-  // }, [handler]);
+  useEffect(() => {
+    savedHandler.current = handler;
+  }, [handler]);
 
   useEffect(
     () => {
@@ -20,7 +20,7 @@ function useEventListener(eventName, handler, element = window) {
       if (!isSupported) return;
 
       // Create event listener that calls handler function stored in ref
-      const eventListener = (event) => handler(event);
+      const eventListener = (event) => savedHandler.current(event);
 
       // Add event listener
       element.addEventListener(eventName, eventListener);

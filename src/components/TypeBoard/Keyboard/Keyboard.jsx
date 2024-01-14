@@ -4,7 +4,7 @@ import { keyboard } from "constants";
 import { Key } from "components";
 import { useEventListener } from "hooks";
 
-function Keyboard({ setText, handleBackspace }) {
+function Keyboard({ setText, handleBackspace, handleEnter }) {
   const { keyCode, keyMap } = keyboard;
   const keyRefs = {};
   for (const keyRef in keyMap) {
@@ -12,6 +12,11 @@ function Keyboard({ setText, handleBackspace }) {
   }
 
   useEventListener("keydown", (event) => {
+    event.preventDefault();
+    console.log("event key", event.key);
+    if (event.key === "Enter") {
+      handleEnter();
+    }
     if (event.key === "Backspace") {
       handleBackspace();
     }

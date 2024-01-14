@@ -34,9 +34,24 @@ module.exports = [
       // Translates CSS into CommonJS
       "css-loader",
       // Compiles Sass to CSS
-      "sass-loader",
+      {
+        loader: "sass-loader",
+        options: {
+          additionalData: `@import  '/src/style/variables/_variables.scss';`,
+        },
+      },
     ],
   },
+  {
+    test: /\.(gif|svg|jpg|png)$/,
+    loader: "file-loader",
+  },
+  // {
+  //   loader: "sass-resources-loader",
+  //   options: {
+  //     resources: "src/style/variables/_color.scss",
+  //   },
+  // },
   // Put your webpack loader rules in this array.  This is where you would put
   // your ts-loader configuration for instance:
   /**

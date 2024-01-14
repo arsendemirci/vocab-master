@@ -5,7 +5,8 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import "./InputArea.scss";
+import { IconButton } from "components";
+import style from "./InputArea.module.scss";
 
 // import useEventListener from "../../../hooks/useEventListener.jsx";
 
@@ -29,10 +30,18 @@ const InputArea = forwardRef((props, ref) => {
 
     return event.scrollWidth > areaLength;
   };
+  const onSubmitAnswer = (check) => {
+    const answer = word.join("").replace(/\s+/g, " ").trim();
+    const isCorrect = answer && answer == check;
+    setWord([]);
+    return { answer, isCorrect };
+  };
 
   useImperativeHandle(ref, () => ({
     pushLetter,
     deleteLetter,
+    onSubmitAnswer,
+    setWord,
   }));
 
   useEffect(() => {
@@ -44,24 +53,31 @@ const InputArea = forwardRef((props, ref) => {
     }
   });
   return (
-    <div className="input-area" ref={refArea}>
+    <div className={style["input-area"]} ref={refArea}>
       <div
-        className={`input ${overflowActive ? "float-right" : ""}`}
+        className={`${style.input} ${overflowActive && style["float-right"]}`}
         ref={refKey}
       >
         {word.map((w, index) => {
-          let style = {};
+          let styles = {};
           if (w === " ") {
-            style["marginLeft"] = "10px";
+            styles["marginLeft"] = "10px";
           }
 
           return (
-            <div key={index} className="input-char" style={style}>
+            <div key={index} className={style["input-char"]} style={styles}>
               {w}
             </div>
           );
         })}
       </div>
+      <IconButton
+        className={style.icon}
+        iconName="send"
+        onClick={props.onSubmitAnswer}
+        iconHeight={32}
+        iconWidth={32}
+      />
     </div>
   );
 });

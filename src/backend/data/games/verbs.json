@@ -1,0 +1,150 @@
+[
+  {
+    "question": "schreiben",
+    "check": "to write"
+  },
+  {
+    "question": "laufen",
+    "check": "to walk"
+  },
+  {
+    "question": "lernen",
+    "check": "to learn"
+  },
+  {
+    "question": "fahren",
+    "check": "to drive"
+  },
+  {
+    "question": "kaufen",
+    "check": "to buy"
+  },
+  {
+    "question": "geben",
+    "check": "to give"
+  },
+  {
+    "question": "besuchen",
+    "check": "to visit"
+  },
+  {
+    "question": "suchen",
+    "check": "to search"
+  },
+  {
+    "question": "sehen",
+    "check": "to see"
+  },
+  {
+    "question": "kochen",
+    "check": "to cook"
+  },
+  {
+    "question": "spielen",
+    "check": "to play"
+  },
+  {
+    "question": "bleiben",
+    "check": "to stay"
+  },
+  {
+    "question": "aufhören",
+    "check": "to stop"
+  },
+  {
+    "question": "strudeln",
+    "check": "to swirl"
+  },
+  {
+    "question": "sprechen",
+    "check": "to speak"
+  },
+  {
+    "question": "wohnen",
+    "check": "to live"
+  },
+  {
+    "question": "studieren",
+    "check": "to study"
+  },
+  {
+    "question": "mögen",
+    "check": "to like"
+  },
+  {
+    "question": "mieten",
+    "check": "to rent"
+  },
+  {
+    "question": "essen",
+    "check": "to eat"
+  },
+  {
+    "question": "lesen",
+    "check": "to read"
+  },
+  {
+    "question": "gehen",
+    "check": "to go"
+  },
+  {
+    "question": "schlafen",
+    "check": "to sleep"
+  },
+  {
+    "question": "fernsehen",
+    "check": "to watch tv"
+  },
+  {
+    "question": "stehen",
+    "check": "to stand"
+  },
+  {
+    "question": "schließen",
+    "check": "to close"
+  },
+  {
+    "question": "bevorzugen",
+    "check": "to prefer"
+  },
+  {
+    "question": "wollen",
+    "check": "to want"
+  },
+  {
+    "question": "machen",
+    "check": "to make"
+  },
+  {
+    "question": "bestellen",
+    "check": "to order"
+  },
+  {
+    "question": "einkaufen",
+    "check": "to shop"
+  },
+  {
+    "question": "unterrichen",
+    "check": "to teach"
+  },
+  {
+    "question": "servieren",
+    "check": "to serve"
+  },
+  {
+    "question": "verkaufen",
+    "check": "to sell"
+  },
+  {
+    "question": "pflegen",
+    "check": "to care for"
+  },
+  {
+    "question": "finden",
+    "check": "to find"
+  },
+  {
+    "question": "brauchen",
+    "check": "to need"
+  }
+]

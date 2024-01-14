@@ -12,5 +12,6 @@ $sizes: (
 @each $name, $size in $sizes {
   #{$name} {
     font-size: $size;
+    margin: 0;
   }
 }

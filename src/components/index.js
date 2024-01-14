@@ -5,3 +5,6 @@ export { default as Key } from "./TypeBoard/Key/Key.jsx";
 export { default as Keyboard } from "./TypeBoard/Keyboard/Keyboard.jsx";
 export { default as InputArea } from "./TypeBoard/InputArea/InputArea.jsx";
 export { default as TypeBoard } from "./TypeBoard/TypeBoard.jsx";
+export { default as Button } from "./UI/Button/Button.jsx";
+export { default as IconButton } from "./UI/IconButton/IconButton.jsx";
+export { default as QuestionBoard } from "./QuestionBoard/QuestionBoard.jsx";

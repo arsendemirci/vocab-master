@@ -17,6 +17,8 @@ module.exports = {
       components: path.resolve(__dirname, "src/components/"),
       constants: path.resolve(__dirname, "src/shared/constants.js"),
       hooks: path.resolve(__dirname, "src/hooks/"),
+      gameUtils: path.resolve(__dirname, "src/utils/game.js"),
+      arrayUtils: path.resolve(__dirname, "src/utils/array.js"),
     },
   },
   // plugins: [
