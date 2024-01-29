@@ -1,12 +1,12 @@
 .button {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 16px;
   background-color: $button-primary-bg-color;
   user-select: none;
   border: 1px solid rgba(218, 224, 231, 0.5);
   color: white;
-  padding: 20px 30px;
+  padding: 10px 20px;
   outline: 0;
   font-weight: 700;
   font-size: large;

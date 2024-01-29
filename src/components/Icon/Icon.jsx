@@ -1,21 +1,21 @@
 import React from "react";
-import { icons } from "constants";
+import { iconConfig } from "config";
 
 function Icon(props) {
   let { width, height, color } = props;
   width = width ?? 20;
   height = height ?? 20;
   return (
-    <svg width={width} height={height} viewBox={icons[props.icon].viewBox}>
+    <svg width={width} height={height} viewBox={iconConfig[props.icon].viewBox}>
       <path
         fill={
           color
             ? color
-            : icons[props.icon].fill
-            ? icons[props.icon].fill
+            : iconConfig[props.icon].fill
+            ? iconConfig[props.icon].fill
             : "currentColor"
         }
-        d={icons[props.icon].d}
+        d={iconConfig[props.icon].d}
       ></path>
     </svg>
   );

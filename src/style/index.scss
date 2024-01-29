@@ -26,7 +26,7 @@ a {
 // ------ main page styles ----------
 .main-container {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     background-color: $main-bg-color;
     height: $window-height;
     overflow: hidden;
@@ -34,8 +34,9 @@ a {
 
     .main-wrapper {
         display: flex;
-        width: $window-width;
-        height: $page-height;
+        // width: $window-width;
+        // height: $page-height;
+        flex-direction: column;
 
         .page-container {
             background-color: $layout-bg-color;

@@ -8,3 +8,6 @@ export { default as TypeBoard } from "./TypeBoard/TypeBoard.jsx";
 export { default as Button } from "./UI/Button/Button.jsx";
 export { default as IconButton } from "./UI/IconButton/IconButton.jsx";
 export { default as QuestionBoard } from "./QuestionBoard/QuestionBoard.jsx";
+export { default as ScoreBoard } from "./ScoreBoard/ScoreBoard.jsx";
+export { default as GameCreate } from "./GameCreate/GameCreate.jsx";
+export { default as SplashScreen } from "./SplashScreen/SplashScreen.jsx";

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./IconButton.module.scss";
-import { useRippleEffect } from "hooks";
+import { useRippleEffect } from "#hooks";
 
 import { Icon } from "components";
 

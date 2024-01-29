@@ -5,23 +5,26 @@ import React, {
   useEffect,
   useRef,
 } from "react";
+import { setOverflowFlag } from "#boardSlice";
 import { IconButton } from "components";
 import style from "./InputArea.module.scss";
+import { useSelector, useDispatch } from "react-redux";
 
-// import useEventListener from "../../../hooks/useEventListener.jsx";
-
-const InputArea = forwardRef((props, ref) => {
-  const [word, setWord] = useState([]);
-  const [overflowActive, setOverflowActive] = useState(false);
+const InputArea = ({ onSubmitAnswer }) => {
+  const store = useSelector((state) => state.boardStore);
+  const dispatch = useDispatch();
+  // const [word, setWord] = useState([]);
+  // const [overflowActive, setOverflowActive] = useState(false);
   const refKey = useRef(null);
   const refArea = useRef(null);
-  const pushLetter = (letter) => {
-    setWord((word) => [...word, letter]);
-  };
-  const deleteLetter = () => {
-    word.splice(-1);
-    setWord((word) => [...word]);
-  };
+  // const pushLetter = (letter) => {
+  //   // setWord((word) => [...word, letter]);
+  //   dispatch(addChar({ char }));
+  // };
+  // const deleteLetter = () => {
+  //   word.splice(-1);
+  //   setWord((word) => [...word]);
+  // };
   const isOverflowActive = (event) => {
     const areaPaddingX =
       parseFloat(window.getComputedStyle(refArea.current).paddingLeft) +
@@ -30,35 +33,30 @@ const InputArea = forwardRef((props, ref) => {
 
     return event.scrollWidth > areaLength;
   };
-  const onSubmitAnswer = (check) => {
-    const answer = word.join("").replace(/\s+/g, " ").trim();
-    const isCorrect = answer && answer == check;
-    setWord([]);
-    return { answer, isCorrect };
-  };
-
-  useImperativeHandle(ref, () => ({
-    pushLetter,
-    deleteLetter,
-    onSubmitAnswer,
-    setWord,
-  }));
+  // const onSubmitAnswer = (check) => {
+  //   const answer = word.join("").replace(/\s+/g, " ").trim().toLowerCase();
+  //   const isCorrect = answer && answer == check.toLowerCase();
+  //   setWord([]);
+  //   return { answer, isCorrect };
+  // };
 
   useEffect(() => {
-    if (isOverflowActive(refKey.current) && !overflowActive) {
-      setOverflowActive(true);
+    if (isOverflowActive(refKey.current) && !store.overflowActive) {
+      dispatch(setOverflowFlag({ isOverflow: true }));
     }
-    if (!isOverflowActive(refKey.current) && overflowActive) {
-      setOverflowActive(false);
+    if (!isOverflowActive(refKey.current) && store.overflowActive) {
+      dispatch(setOverflowFlag({ isOverflow: false }));
     }
   });
   return (
     <div className={style["input-area"]} ref={refArea}>
       <div
-        className={`${style.input} ${overflowActive && style["float-right"]}`}
+        className={`${style.input} ${
+          store.overflowActive && style["float-right"]
+        }`}
         ref={refKey}
       >
-        {word.map((w, index) => {
+        {store.word.map((w, index) => {
           let styles = {};
           if (w === " ") {
             styles["marginLeft"] = "10px";
@@ -74,12 +72,12 @@ const InputArea = forwardRef((props, ref) => {
       <IconButton
         className={style.icon}
         iconName="send"
-        onClick={props.onSubmitAnswer}
+        onClick={onSubmitAnswer}
         iconHeight={32}
         iconWidth={32}
       />
     </div>
   );
-});
+};
 
 export default InputArea;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRippleEffect } from "hooks";
+import { useRippleEffect } from "#hooks";
 import classes from "./Button.module.scss";
 
 const Button = (props) => {

@@ -1,5 +1,6 @@
 module.exports = {
   channels: {
+    GET_GAME: "get_game",
     GET_RPKS: "get_rpks",
     APP_EXIT: "exit_app",
   },
@@ -101,9 +102,5 @@ module.exports = {
     ACTIVE: "active",
     NOT_STARTED: "not_started",
     GAME_OVER: "game_over",
-  },
-  GameActions: {
-    START_GAME: "startGame",
-    NEXT_QUESTION: "nextQuestion",
   },
 };

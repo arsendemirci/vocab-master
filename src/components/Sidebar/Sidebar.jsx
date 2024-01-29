@@ -1,8 +1,8 @@
 import "./Sidebar.scss";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { channels } from "constants";
-const { ipcRenderer } = window.require("electron");
+// import { ipcConfig } from "config";
+// const { ipcRenderer } = window.require("electron");
 import { Icon } from "components";
 
 function Sidebar() {
@@ -27,9 +27,7 @@ function Sidebar() {
         </nav>
 
         <div className="menu-footer">
-          <button onClick={() => ipcRenderer.send(channels.APP_EXIT)}>
-            Exit
-          </button>
+          <button onClick={() => window.api.applicationExit()}>Exit</button>
         </div>
       </div>
     </div>

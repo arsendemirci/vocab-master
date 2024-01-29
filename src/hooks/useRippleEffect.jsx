@@ -38,7 +38,7 @@ function useRippleEffect({ onClick, origin }) {
       height: maxWave + "px",
       click: false,
     };
-    console.log("click handler ici ", e.target, stSet);
+
     if (origin === "center") {
       setState({
         ...stSet,

@@ -2,11 +2,14 @@
 
 .top-bar {
   height: $top-bar-height;
-  width: $top-bar-width;
 
-  &-logo {
+  .top-bar-logo {
     width: $menu-width;
     padding: 10px 20px;
+    height: 100%;
+    img{
+      height: 100%;
+    }
   }
 
   &-content {

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./QuestionBoard.module.scss";
 import { IconButton, Button } from "components";
-import { playAudio } from "gameUtils";
+import { playAudio } from "#gameUtils";
 
 const QuestionBoard = ({ onSubmitAnswer, question }) => {
   return (

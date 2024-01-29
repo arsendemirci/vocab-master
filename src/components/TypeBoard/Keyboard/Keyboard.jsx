@@ -1,11 +1,11 @@
 import "./Keyboard.scss";
 import React, { useRef } from "react";
-import { keyboard } from "constants";
+import { keyboardConfig } from "config";
 import { Key } from "components";
-import { useEventListener } from "hooks";
+import { useEventListener } from "#hooks";
 
 function Keyboard({ setText, handleBackspace, handleEnter }) {
-  const { keyCode, keyMap } = keyboard;
+  const { keyCode, keyMap } = keyboardConfig;
   const keyRefs = {};
   for (const keyRef in keyMap) {
     keyRefs[keyRef] = useRef(null);
@@ -13,7 +13,7 @@ function Keyboard({ setText, handleBackspace, handleEnter }) {
 
   useEventListener("keydown", (event) => {
     event.preventDefault();
-    console.log("event key", event.key);
+    // console.log("event key", event.key);
     if (event.key === "Enter") {
       handleEnter();
     }

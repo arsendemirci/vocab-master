@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import classes from "./IconButton.module.scss";
-import { useRippleEffect } from "hooks";
+import { useRippleEffect } from "#hooks";
 
 const IconButton = (props) => {
   const logoGifr = require("/src/assets/images/icon/speaker.gif").default;
