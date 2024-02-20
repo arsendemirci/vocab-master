@@ -10,7 +10,11 @@ export default {
     GET_RPKS: "get_rpks",
     GET_GAME: "get_game",
     GET_LISTS: "get_lists",
+    GET_QUICK_GAME: "get_quick_game",
     APP_EXIT: "exit_app",
     CONVERT_EXCELL: "convert_excell",
+    LOGIN: "login",
+    REFRESH: "refresh_token",
+    TEST: "test",
   },
 };

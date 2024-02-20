@@ -15,14 +15,18 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, "src/components/"),
-      config: path.resolve(__dirname, "src/config/index.js"),
+      "#config": path.resolve(__dirname, "src/config/index.js"),
       "#hooks": path.resolve(__dirname, "src/hooks/"),
       "#gameUtils": path.resolve(__dirname, "src/utils/game.js"),
-      arrayUtils: path.resolve(__dirname, "src/utils/array.js"),
+      "#storageUtils": path.resolve(__dirname, "src/utils/storage.js"),
+      "#arrayUtils": path.resolve(__dirname, "src/utils/array.js"),
       "#views": path.resolve(__dirname, "src/views/index.js"),
       "#gameSlice": path.resolve(__dirname, "src/store/slices/gameSlice.js"),
       "#boardSlice": path.resolve(__dirname, "src/store/slices/boardSlice.js"),
+      "#userSlice": path.resolve(__dirname, "src/store/slices/userSlice.js"),
+      "#modalSlice": path.resolve(__dirname, "src/store/slices/modalSlice.js"),
       "#stores": path.resolve(__dirname, "src/store/slices/index.js"),
+      "#routes": path.resolve(__dirname, "src/router/routes.js"),
     },
   },
   // plugins: [

@@ -1,36 +1,64 @@
 import "./Sidebar.scss";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import { ipcConfig } from "config";
-// const { ipcRenderer } = window.require("electron");
-import { Icon } from "components";
+import { useDispatch } from "react-redux";
+import { links } from "#routes";
+import { useIPC } from "#hooks";
+import { startGame } from "#gameSlice";
+import { Icon, ProfileCard } from "components";
 
 function Sidebar() {
   const navigate = useNavigate();
-  return (
-    <div className="sidebar-wrapper">
-      <div className="scrollbox-wrapper">
-        <nav>
-          <ul className="sidebar-nav">
-            <li onClick={() => navigate("/")}>
-              <Icon icon="home" /> <label>Home</label>
-            </li>
-            <li onClick={() => navigate("/words")}>
-              <Icon icon="package" />
-              <label>Words</label>
-            </li>
-            <li onClick={() => navigate("/profile")}>
-              <Icon icon="gear" />
-              <label>Profile</label>
-            </li>
-          </ul>
-        </nav>
+  const ipc = useIPC();
+  // const dispatch = useDispatch();
+  // const startQuickGame = async () => {
+  //   const gameData = await ipc.getQuickGame();
+  //   console.log("game data", gameData);
+  //   dispatch(startGame({ gameData }));
+  //   navigate("/");
+  // };
 
-        <div className="menu-footer">
-          <button onClick={() => window.api.applicationExit()}>Exit</button>
+  return (
+    <div>
+      <div className="sidebar-left-top"></div>
+    <div className="sidebar-container">
+      <div className="sidebar-wrapper">
+        <div className="scrollbox-wrapper">
+          <nav>
+            <ul className="sidebar-nav">
+              <li onClick={() => navigate(links.QuickGame())}>
+                <Icon icon="play" /> <label>Quick Play</label>
+              </li>
+              <li
+                className="active"
+                onClick={() => navigate(links.CreateGame())}
+              >
+                <Icon icon="home" /> <label>Create Game</label>
+              </li>
+              <li onClick={() => navigate(links.Words())}>
+                <Icon icon="package" />
+                <label>Words</label>
+              </li>
+              <li onClick={() => navigate(links.Profile())}>
+                <Icon icon="gear" />
+                <label>Profile</label>
+              </li>
+              {/* <li onClick={() => navigate(links.Account())}>
+                <Icon icon="gear" />
+                <label>Account</label>
+              </li> */}
+              <li onClick={() => ipc.applicationExit()}>
+                <Icon icon="power" />
+                <label>Quit</label>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
+      <ProfileCard />
     </div>
+    </div>
+
   );
 }
 export default Sidebar;

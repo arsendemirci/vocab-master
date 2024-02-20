@@ -3,7 +3,7 @@ import style from "./QuestionBoard.module.scss";
 import { IconButton, Button } from "components";
 import { playAudio } from "#gameUtils";
 
-const QuestionBoard = ({ onSubmitAnswer, question }) => {
+const QuestionBoard = ({ question }) => {
   return (
     <div className={style.board}>
       <div className={style.card}>

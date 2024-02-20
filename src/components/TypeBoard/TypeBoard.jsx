@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nextQuestion } from "#gameSlice";
-import { addChar, deleteChar, submitAnswer } from "#boardSlice";
+import {
+  addChar,
+  deleteChar,
+  submitAnswer,
+  updateCheckmark,
+} from "#boardSlice";
 import "./TypeBoard.scss";
-import { gameConfig } from "config";
+import { gameConfig } from "#config";
 import { Keyboard, InputArea, QuestionBoard } from "components";
 import { playAudio, getCleanWords } from "#gameUtils";
 
@@ -23,6 +28,7 @@ function TypeBoard() {
   };
 
   const handleSubmitAnswer = () => {
+    if (boardState.mark) return; // current answer is being checked
     const orgAnswer = boardState.word.join("");
     const { check, answer } = getCleanWords(
       gameState.questions[gameState.activeQuestion].check,
@@ -30,7 +36,6 @@ function TypeBoard() {
     );
 
     const isCorrect = answer && answer == check;
-    dispatch(submitAnswer());
 
     const gameOver =
       gameState.activeQuestion === gameState.questions.length - 1;
@@ -40,14 +45,19 @@ function TypeBoard() {
       ? gameConfig.status.GAME_OVER
       : gameConfig.status.ACTIVE;
 
-    dispatch(
-      nextQuestion({
-        answer: orgAnswer,
-        isCorrect: isCorrect,
-        status,
-        points,
-      })
-    );
+    dispatch(updateCheckmark({ mark: isCorrect ? "correct" : "wrong" }));
+    setTimeout(() => {
+      dispatch(submitAnswer());
+      dispatch(updateCheckmark({ mark: "" }));
+      dispatch(
+        nextQuestion({
+          answer: orgAnswer,
+          isCorrect: isCorrect,
+          status,
+          points,
+        })
+      );
+    }, 1500);
   };
 
   const handleEnter = () => {
@@ -68,11 +78,10 @@ function TypeBoard() {
       {gameState.status === gameConfig.status.ACTIVE && (
         <div className="typeboard">
           <QuestionBoard
-            onSubmitAnswer={handleSubmitAnswer}
             question={gameState.questions[gameState.activeQuestion].question}
           />
-          <InputArea />
-          <hr className="divider" onSubmitAnswer={handleSubmitAnswer} />
+          <InputArea onSubmitAnswer={handleSubmitAnswer} />
+          <hr className="divider" />
           <Keyboard
             setText={setText}
             handleBackspace={handleBackspace}

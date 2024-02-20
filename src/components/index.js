@@ -11,3 +11,8 @@ export { default as QuestionBoard } from "./QuestionBoard/QuestionBoard.jsx";
 export { default as ScoreBoard } from "./ScoreBoard/ScoreBoard.jsx";
 export { default as GameCreate } from "./GameCreate/GameCreate.jsx";
 export { default as SplashScreen } from "./SplashScreen/SplashScreen.jsx";
+export { default as HoverButton } from "./UI/HoverButton/HoverButton.jsx";
+export { default as TimesSVG } from "./UI/AnimatedSVG/TimesSVG.jsx";
+export { default as CheckSVG } from "./UI/AnimatedSVG/CheckSVG.jsx";
+export { default as ProfileCard } from "./ProfileCard/ProfileCard.jsx";
+export { default as Modal } from "./Modal/Modal.jsx";

@@ -1,5 +1,5 @@
 import React from "react";
-import { iconConfig } from "config";
+import { iconConfig } from "#config";
 
 function Icon(props) {
   let { width, height, color } = props;

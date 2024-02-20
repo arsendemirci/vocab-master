@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getGameLists, selectList, startGame } from "#gameSlice";
-import style from "./GameCreate.module.scss";
+import style from "./GameCreate.module.scss";  
 import { Autocomplete, TextField } from "@mui/material";
 import { useIPC } from "#hooks";
 import { Button } from "components";
-import { gameConfig } from "config";
+import { gameConfig } from "#config";
+import { useLocation } from "react-router-dom";
 
-function GameCreate() {
+function GameCreate(props) {
   console.log("Gamecreate reneder");
+  const location = useLocation();
 
   const gameStore = useSelector((state) => state.gameStore);
 
@@ -25,14 +27,21 @@ function GameCreate() {
   };
 
   useEffect(() => {
-    async function getListData() {
-      console.log("getGameLists triggered");
-      const listData = await ipc.getLists();
-      dispatch(getGameLists({ lists: listData }));
-      console.log("list data geldi", listData);
+    console.log("propssssss quickck", props.quick);
+    if (props.quick) {
+      (async function startQuick() {
+        const quickGame = await ipc.getQuickGame();
+        console.log("quick game geldi", quickGame);
+        dispatch(startGame({ gameData: quickGame }));
+      })();
+    } else {
+      (async function getListData() {
+        const listData = await ipc.getLists();
+        dispatch(getGameLists({ lists: listData }));
+      })();
     }
-    getListData();
-  }, []);
+  }, [location]);
+
   return (
     gameStore.game.status === gameConfig.status.NOT_STARTED && (
       <div>
@@ -54,6 +63,9 @@ function GameCreate() {
               </div>
               <div>
                 <Button onClick={onStartGame}>Start Game</Button>{" "}
+                <Button onClick={() => console.log("ripple test")}>
+                  Ripple Test
+                </Button>
               </div>
             </div>
           </div>

@@ -1,5 +1,27 @@
 $input-height: 38px;
 $wrapper-padding-y: 16px;
+
+@keyframes flashBgRed {
+  30% {
+    background-color: #27ff0000;
+    box-shadow: 0 0 20px 16px rgba(255, 0, 0, 0.375);
+  }
+  100% {
+    background-color: white;
+    box-shadow: 0 0 20px 6px rgba(104, 104, 104, 0.1490196078);
+  }
+}
+@keyframes flashBgGreen {
+  30% {
+    background-color: #27ff0000;
+    box-shadow: 0 0 20px 16px #27ff0073;
+  }
+  100% {
+    background-color: white;
+    box-shadow: 0 0 20px 10px rgba(104, 104, 104, 0.1490196078);
+  }
+}
+
 .input-area {
   border: 1px solid rgba(128, 128, 128, 0.524);
   padding: $wrapper-padding-y 24px;
@@ -10,12 +32,27 @@ $wrapper-padding-y: 16px;
   background: white;
   box-shadow: 0 0 20px 6px #68686826;
   position: relative;
+  &.correct {
+    animation: flashBgGreen 1s forwards;
+    .input {
+      animation: slideFadeOut 1s forwards;
+      animation-delay: 0.4s;
+    }
+  }
+  &.wrong {
+    animation: flashBgRed 1s forwards;
+    .input {
+      animation: fallDown 1s forwards;
+      animation-delay: 0.4s;
+    }
+  }
   .input {
     display: inline-block;
     height: $input-height;
     width: 100%;
     float: left;
     white-space: nowrap;
+
     &.float-right {
       float: right;
       width: unset;
@@ -72,5 +109,32 @@ $wrapper-padding-y: 16px;
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+@keyframes slideFadeOut {
+  20% {
+    transform: translateX(-10px) skewX(10deg);
+  }
+  100% {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: 0;
+  }
+}
+@keyframes fallDown {
+  60% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+}
+@keyframes flashMark {
+  60% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(60px);
+    opacity: 0;
   }
 }

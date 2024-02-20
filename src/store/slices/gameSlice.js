@@ -1,21 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gameConfig } from "config";
+import { gameConfig } from "#config";
 
+const initialState = {
+  lists: [],
+  game: {
+    settings: { list: { id: 0, title: "Vocabulary List" } },
+    status: gameConfig.status.NOT_STARTED,
+    questions: [],
+    score: 0,
+    activeQuestion: -1,
+  },
+};
 export const gameSlice = createSlice({
   name: "game",
-  initialState: {
-    lists: [],
-    game: {
-      settings: { list: {id:0, title:'Vocabulary List'} },
-      status: gameConfig.status.NOT_STARTED,
-      questions: [],
-      score: 0,
-      activeQuestion: -1,
-    },
-  },
+  initialState,
   reducers: {
+    resetGame: (state) => {
+      return initialState;
+    },
     getGameLists: (state, { payload }) => {
       state.lists = [...payload.lists];
+      state.game.status = gameConfig.status.NOT_STARTED;
     },
     selectList: (state, { payload }) => {
       state.game.settings.list.id = payload.id;
@@ -50,5 +55,6 @@ export const {
   startGame,
   nextQuestion,
   restartGame,
+  resetGame,
 } = gameSlice.actions;
 export default gameSlice.reducer;

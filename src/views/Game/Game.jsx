@@ -1,20 +1,13 @@
 import React from "react";
 import { TypeBoard, GameCreate, ScoreBoard } from "components";
-// import { useSelector } from "react-redux";
-// import { gameConfig } from "config";
+import { useParams } from "react-router";
 function Game() {
-  // const gameState = useSelector((state) => state.gameStore.game);
-  // const SwitchView = () => {
-  //   return gameState.status === gameConfig.status.NOT_STARTED ? (
-  //     <GameCreate />
-  //   ) : (
-  //     <TypeBoard />
-  //   );
-  // };
+  const { quick } = useParams();
+  console.log("GAME COMPONEENT  QUICK PARAM", quick);
   return (
     <div>
       <section>
-        <GameCreate />
+        <GameCreate quick={quick} />
         <TypeBoard />
         <ScoreBoard />
       </section>

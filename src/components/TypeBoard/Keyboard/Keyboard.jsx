@@ -1,6 +1,6 @@
 import "./Keyboard.scss";
 import React, { useRef } from "react";
-import { keyboardConfig } from "config";
+import { keyboardConfig } from "#config";
 import { Key } from "components";
 import { useEventListener } from "#hooks";
 

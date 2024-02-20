@@ -54,8 +54,7 @@ function useRippleEffect({ onClick, origin }) {
         y: yInside + "px",
       });
     }
-
-    onClick(e);
+    if (onClick) onClick(e);
   };
   const onAnimationEnd = () => {
     setState(initial);

@@ -14,6 +14,7 @@ module.exports = {
     alias: {
       config: path.resolve(__dirname, "src/config/index.js"),
       arrayUtils: path.resolve(__dirname, "src/utils/array.js"),
+      "#storageUtils": path.resolve(__dirname, "src/utils/storage.js"),
       verbs: path.resolve(__dirname, "src/backend/data/games/verbs.json"),
       pathUtils: path.resolve(__dirname, "src/backend/utils/pathUtils.js"),
       dbModule: path.resolve(__dirname, "src/backend/db/db.js"),

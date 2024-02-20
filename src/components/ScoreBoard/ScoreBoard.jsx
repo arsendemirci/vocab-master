@@ -3,9 +3,9 @@ import style from "./ScoreBoard.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { startGame, restartGame } from "#gameSlice";
 import { Icon, Button } from "components";
-import { gameConfig } from "config";
+import { gameConfig } from "#config";
 import { useIPC } from "#hooks";
-import { sum } from "arrayUtils";
+import { sum } from "#arrayUtils";
 
 const ScoreBoard = () => {
   const gameState = useSelector((state) => state.gameStore.game);
@@ -15,8 +15,13 @@ const ScoreBoard = () => {
     if (isRestart) {
       dispatch(restartGame());
     } else {
-      const gameData = await ipc.getGame(gameState.settings.list.id);
-      console.log("game data geldi", gameData);
+      let gameData;
+      if (gameState.settings.list.id) {
+        gameData = await ipc.getGame(gameState.settings.list.id);
+      } else {
+        gameData = await ipc.getQuickGame();
+      }
+
       dispatch(startGame({ gameData }));
     }
   };
