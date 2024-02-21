@@ -7,23 +7,29 @@ import { useForm } from "react-hook-form";
 import { httpConfig } from "#config";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo, resetUserInfo } from "#userSlice";
+import {
+  validateLogin,
+  validateRegister,
+  setActivePanel,
+} from "#slices/accountSlice";
 
-const initialAccount = {
-  loginForm: {
-    email: {
-      error: false,
-      msg: "",
-    },
-    password: {
-      error: false,
-      msg: "",
-    },
-  },
-};
+// const initialAccount = {
+//   loginForm: {
+//     email: {
+//       error: false,
+//       msg: "",
+//     },
+//     password: {
+//       error: false,
+//       msg: "",
+//     },
+//   },
+// };
 function Account() {
   console.log("Account COMPONENT IS RENDERING");
-  const [activeRight, setActiveRight] = useState("");
-  const [account, setAccouunt] = useState(initialAccount);
+  const account = useSelector((state) => state.accountStore);
+  // const [activeRight, setActiveRight] = useState("");
+  // const [account, setAccouunt] = useState(initialAccount);
   const dispatch = useDispatch();
   const ipc = useIPC();
 
@@ -31,14 +37,14 @@ function Account() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "onBlur", reValidateMode: "onChange" });
   const onSubmit = async (data) => {
     console.log("submitted form ", data);
     const loginData = await ipc.login(data.email, data.password);
     if (loginData.error) {
       const { code, msg } = loginData.error;
 
-      const loginFormState = {
+      const loginForm = {
         email: {
           error: code === httpConfig.errorCode.INVALID_EMAIL,
           msg: code === httpConfig.errorCode.INVALID_EMAIL && msg,
@@ -48,7 +54,8 @@ function Account() {
           msg: code === httpConfig.errorCode.INVALID_PASSWORD && msg,
         },
       };
-      setAccouunt((prev) => ({ ...prev, loginForm: loginFormState }));
+      // setAccouunt((prev) => ({ ...prev, loginForm: loginFormState }));
+      dispatch(validateLogin({ loginForm }));
     } else {
       // setAccouunt((prev) => ({ ...prev, pageOpen: false }));
       // login successfull, dispatch setUserInfo and animate leave
@@ -60,12 +67,15 @@ function Account() {
   //   navigate(links.Home());
   // };
   // const wrapperClass = `${styles.wrapper} ${!account.pageOpen && styles.close}`;
-  const containerClass = `${styles.container} ${styles[activeRight]}`;
+  const containerClass = `${styles.container} ${styles[account.activePanel]}`;
   const signinClass = `${styles.form} ${styles.signin}`;
   const signupClass = `${styles.form} ${styles.signup}`;
   const panelLeft = `${styles.panel} ${styles.panelLeft}`;
   const panelRight = `${styles.panel} ${styles.panelRight}`;
 
+  useEffect(() => {
+    console.log("formstate", errors);
+  });
   return (
     // <div className={wrapperClass}>
     //   <div>
@@ -78,7 +88,7 @@ function Account() {
         <div className={styles.formPart}>
           <h1>Create Account</h1>
           <TextField label="Name *" type="text" variant="outlined" />
-          <TextField label="Email *" type="email" variant="outlined" />
+          <TextField label="Email *" type="text" variant="outlined" />
           <TextField label="Password *" type="password" variant="outlined" />
           <Button onClick={() => console.log("adslkfja")}>Sign Up</Button>
         </div>
@@ -91,11 +101,15 @@ function Account() {
             label="Email *"
             type="text"
             variant="outlined"
-            error={account.loginForm.email.error}
-            helperText={account.loginForm.email.msg}
+            error={errors.email || account.loginForm.email.error}
+            helperText={errors.email?.message || account.loginForm.email.msg}
             {...register("email", {
-              required: true,
-              onChange: (e) => console.log("you're typing email"),
+              required: "Please enter a valid email",
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Please enter a valid email",
+              },
             })}
           />
           <TextField
@@ -103,9 +117,11 @@ function Account() {
             label="Password *"
             type="password"
             variant="outlined"
-            error={account.loginForm.password.error}
-            helperText={account.loginForm.password.msg}
-            {...register("password")}
+            error={errors.password || account.loginForm.password.error}
+            helperText={errors.password?.message || account.loginForm.password.msg}
+            {...register("password", {
+              required: "Please enter your password!",
+            })}
           />
           <a href="#">Forgot your password?</a>
           <Button type="submit">Sign In</Button>
@@ -120,8 +136,8 @@ function Account() {
               experience!
             </p>
             <p>
-              If you already have an account click{" "}
-              <a onClick={() => setActiveRight("")}>
+              If you already have an account click &nbsp;
+              <a onClick={() => dispatch(setActivePanel("login"))}>
                 <strong>here</strong>
               </a>{" "}
               to login.
@@ -132,8 +148,8 @@ function Account() {
             <h1>Welcome Back!</h1>
             <p>Login to your VM account entering your e-mail and password.</p>
             <p>
-              If you dont have a VM account click{" "}
-              <a onClick={() => setActiveRight("activeRight")}>
+              If you dont have a VM account click &nbsp;
+              <a onClick={() => dispatch(setActivePanel("register"))}>
                 <strong>here</strong>
               </a>
               to create.
