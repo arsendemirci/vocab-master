@@ -14,6 +14,8 @@ export default {
     APP_EXIT: "exit_app",
     CONVERT_EXCELL: "convert_excell",
     LOGIN: "login",
+    REGISTER: "register",
+    VERIFY_USER: "verify_user",
     REFRESH: "refresh_token",
     TEST: "test",
   },

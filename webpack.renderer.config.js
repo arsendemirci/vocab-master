@@ -24,10 +24,11 @@ module.exports = {
       "#gameSlice": path.resolve(__dirname, "src/store/slices/gameSlice.js"),
       "#boardSlice": path.resolve(__dirname, "src/store/slices/boardSlice.js"),
       "#userSlice": path.resolve(__dirname, "src/store/slices/userSlice.js"),
-      "#modalSlice": path.resolve(__dirname, "src/store/slices/modalSlice.js"),
+      "#appSlice": path.resolve(__dirname, "src/store/slices/appSlice.js"),
       "#slices": path.resolve(__dirname, "src/store/slices/"),
       "#stores": path.resolve(__dirname, "src/store/slices/index.js"),
       "#routes": path.resolve(__dirname, "src/router/routes.js"),
+      "#utils": path.resolve(__dirname, "src/utils/"),
     },
   },
   // plugins: [

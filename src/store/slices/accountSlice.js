@@ -12,15 +12,7 @@ const initialState = {
     },
   },
   registerForm: {
-    name: {
-      error: false,
-      msg: "",
-    },
     email: {
-      error: false,
-      msg: "",
-    },
-    password: {
       error: false,
       msg: "",
     },
@@ -38,7 +30,7 @@ export const accountSlice = createSlice({
       state.loginForm = payload.loginForm;
     },
     validateRegister: (state, { payload }) => {
-      state.registerForm = payload.registerForm;
+      state.registerForm.email = payload.registerEmailValidation;
     },
   },
 });

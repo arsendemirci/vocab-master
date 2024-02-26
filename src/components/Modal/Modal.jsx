@@ -3,7 +3,8 @@ import styles from "./Modal.module.scss";
 import { Button, Icon } from "components";
 import { dialogComponents, dialog } from "components/Dialogs";
 import { createPortal } from "react-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { hideModal } from "#appSlice";
 
 const LoadDialog = (props) => {
   if (typeof dialogComponents[props.component] !== "undefined") {
@@ -14,24 +15,31 @@ const LoadDialog = (props) => {
   ));
 };
 
-function Modal({ show, close, component }) {
-  const [hidden, setHidden] = useState(false);
-
+function Modal() {
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const modal = useSelector((state) => state.appStore.modal);
   const closeClick = () => {
-    setHidden(true);
+    dispatch(hideModal());
   };
-  let wrapperClass = `${styles.wrapper} ${show && styles.show} ${
-    hidden && styles.hide
-  } `;
+  let wrapperClass = `${styles.wrapper} ${show && styles.show}`;
   const containerClass = `${styles.container}`;
+
   useEffect(() => {
-    if (hidden) {
-      setTimeout(() => {
-        close();
-        setHidden(false);
-      }, 1000);
+    if (modal.show) {
+      console.log("modal is showing");
+      setShow(true);
+    } else {
+      console.log("modal is hiding");
+      setShow(false);
     }
-  }, [hidden]);
+    // if (hidden) {
+    //   setTimeout(() => {
+    //     dispatch(hideModal());
+    //     setHidden(false);
+    //   }, 700);
+    // }
+  }, [modal.show]);
   return createPortal(
     <>
       <div className={wrapperClass}>
@@ -40,7 +48,7 @@ function Modal({ show, close, component }) {
             <Icon icon="times" width={24} height={24} color="white" />
           </Button>
           <div className={containerClass}>
-            {LoadDialog({ component })}
+            {LoadDialog({ component: modal.component })}
           </div>
         </div>
       </div>

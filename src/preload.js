@@ -12,6 +12,10 @@ contextBridge.exposeInMainWorld("api", {
   refreshToken: () => ipcRenderer.invoke(ipcConfig.channel.REFRESH),
   login: (email, password) =>
     ipcRenderer.invoke(ipcConfig.channel.LOGIN, email, password),
+  register: (name, email, password) =>
+    ipcRenderer.invoke(ipcConfig.channel.REGISTER, name, email, password),
+  verifyUser: (userId, code) =>
+    ipcRenderer.invoke(ipcConfig.channel.VERIFY_USER, userId, code),
   test: () => ipcRenderer.invoke(ipcConfig.channel.TEST),
   close: () => ipcRenderer.removeAllListeners(),
 });

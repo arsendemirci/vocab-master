@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { links } from "#routes";
 import { resetUserInfo } from "#userSlice";
-import { showModal } from "#modalSlice";
+import { showModal } from "#appSlice";
 import { dialog } from "components/Dialogs";
 
 import { Button } from "components";
